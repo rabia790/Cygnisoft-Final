@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lexend:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Lexend", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-brand-orange: #F48B20; /* Logo Orange */
+  --color-brand-light: #F9FAFB;  /* Studio Grey */
+  --color-brand-midnight: #1A1A1A; /* Deep Charcoal */
+  --color-brand-slate: #4A4A4A;
+  --color-brand-grey: #A0A0A0;
+}
+
+@layer base {
+  body {
+    @apply text-brand-midnight antialiased font-sans bg-white;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-black tracking-tight;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-[120px];
+  }
+  .luxury-card {
+    @apply bg-white border border-gray-100 transition-all duration-500 hover:border-brand-orange hover:shadow-2xl rounded-sm;
+  }
+  .mega-menu-item {
+    @apply block p-3 rounded-lg hover:bg-gray-50 transition-colors;
+  }
+}
+
+@layer utilities {
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+}
