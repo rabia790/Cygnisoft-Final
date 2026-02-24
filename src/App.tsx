@@ -36,7 +36,8 @@ const industryData = {
     roles: [
       { title: "Automation Engineer", desc: "Specialists in PLC programming, robotics integration, and SCADA systems." },
       { title: "Plant Manager", desc: "Experienced leaders for large-scale manufacturing operations and supply chain." },
-      { title: "Quality Assurance", desc: "Experts in Six Sigma, Lean Manufacturing, and ISO compliance standards." }
+      { title: "Quality Assurance", desc: "Experts in Six Sigma, Lean Manufacturing, and ISO compliance standards." },
+      { title: "CNC Programmer", desc: "Precision experts in G-code, CAD/CAM software, and advanced multi-axis machining operations." }
     ]
   },
   technology: {
@@ -48,7 +49,7 @@ const industryData = {
       { label: "Engineers", value: "120+" },
       { label: "Tech Stack", value: "50+" },
       { label: "Fill Rate", value: "92%" },
-      { label: "Time to Hire", value: "14d" }
+      { label: "Time to Hire", value: "48h" }
     ],
     roles: [
       { title: "Full-Stack Developer", desc: "Proficient in modern frameworks like React, Node.js, and Python." },
