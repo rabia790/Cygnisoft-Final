@@ -93,6 +93,62 @@ const industryData = {
   }
 };
 
+
+const solutionData = {
+  techStaffing: {
+    title: "Elite Tech Staffing",
+    subtitle: "Talent Acquisition",
+    heroImage: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2000",
+    description: "Accelerate your product roadmap with pre-vetted, high-performing technical talent.",
+    stats: [
+      { label: "Talent Pool", value: "10k+" },
+      { label: "Fill Rate", value: "98%" },
+      { label: "Avg. Lead Time", value: "12d" },
+      { label: "Retention", value: "95%" }
+    ],
+    roles: [
+      { title: "Software Engineer", desc: "Full-stack, Backend, and Frontend experts." },
+      { title: "Project Manager", desc: "Agile certified leaders for complex delivery." },
+      { title: "DevOps Engineer", desc: "Infrastructure and CI/CD automation specialists." }
+    ]
+  },
+  softwareDev: {
+    title: "Bespoke Software Development",
+    subtitle: "End-to-End Solutions",
+    heroImage: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2000",
+    description: "From MVP to enterprise scale, we build robust digital products tailored to your goals.",
+    stats: [
+      { label: "Projects", value: "150+" },
+      { label: "Tech Stack", value: "30+" },
+      { label: "Quality Score", value: "4.9/5" },
+      { label: "Global Devs", value: "45" }
+    ],
+    roles: [
+      { title: "Frontend Specialist", desc: "React, Next.js, and Vue experts." },
+      { title: "Backend Architect", desc: "Node.js, Python, and scalable cloud logic." },
+      { title: "UI/UX Designer", desc: "User-centric design and prototyping." }
+    ]
+  },
+  training: {
+    title: "Global Training Programs",
+    subtitle: "Workforce Upskilling",
+    heroImage: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2000",
+    description: "Empower your team with cutting-edge technical skills through curated learning paths.",
+    stats: [
+      { label: "Graduates", value: "5k+" },
+      { label: "Curriculum", value: "25+" },
+      { label: "ROI", value: "40%" },
+      { label: "Partner Orgs", value: "18" }
+    ],
+    roles: [
+      { title: "Technical Trainer", desc: "Subject matter experts in cloud and coding." },
+      { title: "Learning Architect", desc: "Custom curriculum design for corporate teams." },
+      { title: "Success Manager", desc: "Ensuring high completion and skill retention." }
+    ]
+  }
+};
+
+
 export default function App() {
   return (
     <Router>
@@ -110,9 +166,9 @@ export default function App() {
           <Route path="/industries/healthcare" element={<IndustryTemplate {...industryData.healthcare} />} />
           
           {/* Solutions Routes (Placeholder for now, using template for demo) */}
-          <Route path="/solutions/tech-staffing" element={<IndustryTemplate {...industryData.technology} title="Elite Tech Staffing" />} />
-          <Route path="/solutions/software-dev" element={<IndustryTemplate {...industryData.technology} title="Bespoke Software Development" />} />
-          <Route path="/solutions/training" element={<IndustryTemplate {...industryData.technology} title="Global Training Programs" />} />
+          <Route path="/solutions/tech-staffing" element={<IndustryTemplate {...solutionData.techStaffing} />} />
+          <Route path="/solutions/software-dev" element={<IndustryTemplate {...solutionData.softwareDev} />} />
+          <Route path="/solutions/training" element={<IndustryTemplate {...solutionData.training} />} />
         </Routes>
       </Layout>
     </Router>
