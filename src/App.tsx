@@ -4,7 +4,13 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import CandidatePortal from "./pages/CandidatePortal";
+// @ts-ignore
 import IndustryTemplate from "./pages/IndustryTemplate";
+import manufacturingImg from "./img/manufacturing.jpg";
+import techImg from "./img/technology.jpg";
+import logisticsImg from "./img/logistics.jpg";
+import healthcareImg from "./img/healthcare.jpg"; 
+import { log } from "console";
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -19,7 +25,7 @@ const industryData = {
   manufacturing: {
     title: "Manufacturing",
     subtitle: "Industrial Excellence",
-    heroImage: "/src/img/manufacturing.jpg",
+    heroImage: manufacturingImg,
     description: "Empowering the next generation of industrial automation with elite engineering and operational talent.",
     stats: [
       { label: "Placements", value: "85+" },
@@ -36,7 +42,7 @@ const industryData = {
   technology: {
     title: "Technology",
     subtitle: "Digital Innovation",
-    heroImage: "/src/img/technology.jpg",
+    heroImage: techImg,
     description: "Bridging the gap between complex technical challenges and the world's most talented developers.",
     stats: [
       { label: "Engineers", value: "120+" },
@@ -53,7 +59,7 @@ const industryData = {
   logistics: {
     title: "Logistics",
     subtitle: "Supply Chain Mastery",
-    heroImage: "/src/img/logistics.jpg",
+    heroImage: logisticsImg,
     description: "Optimizing global trade routes with specialized talent in logistics, warehousing, and distribution.",
     stats: [
       { label: "Operations", value: "45+" },
@@ -70,7 +76,7 @@ const industryData = {
   healthcare: {
     title: "Healthcare",
     subtitle: "Medical Innovation",
-    heroImage: "/src/img/healthcare.jpg",
+    heroImage: healthcareImg,
     description: "Supporting the healthcare industry with specialized medical staffing and health-tech professionals.",
     stats: [
       { label: "Placements", value: "60+" },
