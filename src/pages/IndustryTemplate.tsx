@@ -1,5 +1,6 @@
+import React from "react"; 
 import { motion } from "motion/react";
-import { CheckCircle2, ArrowRight, Send } from "lucide-react";
+import { CheckCircle2, Send } from "lucide-react"; // Removed unused ArrowRight
 
 interface Role {
   title: string;
@@ -16,6 +17,29 @@ interface IndustryPageProps {
 }
 
 export default function IndustryTemplate({ title, subtitle, heroImage, description, roles, stats }: IndustryPageProps) {
+  
+  const handleEmailDraft = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Collecting data via the 'name' attributes added to the inputs below
+    const formData = new FormData(e.target as HTMLFormElement);
+    const name = formData.get("fullname");
+    const email = formData.get("workemail");
+    const company = formData.get("company");
+    const message = formData.get("message");
+    
+    const subject = encodeURIComponent(`Inquiry for ${title} Team - ${company}`);
+    const body = encodeURIComponent(
+      `Hello CygniSoft Team,\n\n` +
+      `My name is ${name} (${email}) from ${company}.\n\n` +
+      `I am interested in scaling our ${title} team. ${message}\n\n` +
+      `Looking forward to hearing from you.`
+    );
+
+    // This triggers the mail application
+    window.location.href = `mailto:hr@cygnisoft.com?subject=${subject}&body=${body}`;
+  };
+
   return (
     <div className="pt-20">
       {/* Hero Section */}
@@ -92,7 +116,9 @@ export default function IndustryTemplate({ title, subtitle, heroImage, descripti
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-brand-dark rounded-[2rem] overflow-hidden flex flex-col lg:flex-row shadow-2xl">
             <div className="lg:w-1/2 p-12 lg:p-20 flex flex-col justify-center text-white">
-              <h2 className="text-4xl font-bold mb-6">Ready to Scale Your {title} Team?</h2>
+              <h2 className="text-4xl font-bold mb-6 text-brand-orange"> 
+                Ready to Scale Your {title} Team?
+              </h2>              
               <p className="text-gray-400 text-lg mb-8">
                 Partner with CygniSoft to access a global pool of vetted professionals. Our agile blueprint ensures you get the right talent, right when you need it.
               </p>
@@ -108,26 +134,32 @@ export default function IndustryTemplate({ title, subtitle, heroImage, descripti
               </ul>
             </div>
             <div className="lg:w-1/2 bg-white p-12 lg:p-20">
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+              {/* FIXED: Form now uses handleEmailDraft */}
+              <form className="space-y-6" onSubmit={handleEmailDraft}>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-xs font-bold uppercase tracking-widest text-gray-400">Full Name</label>
-                    <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 outline-none transition-all" placeholder="John Doe" />
+                    {/* ADDED: name="fullname" */}
+                    <input name="fullname" type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 outline-none transition-all" placeholder="John Doe" required />
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs font-bold uppercase tracking-widest text-gray-400">Work Email</label>
-                    <input type="email" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 outline-none transition-all" placeholder="john@company.com" />
+                    {/* ADDED: name="workemail" */}
+                    <input name="workemail" type="email" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 outline-none transition-all" placeholder="john@company.com" required />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-widest text-gray-400">Company Name</label>
-                  <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 outline-none transition-all" placeholder="Acme Corp" />
+                  {/* ADDED: name="company" */}
+                  <input name="company" type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 outline-none transition-all" placeholder="Acme Corp" required />
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-widest text-gray-400">Message</label>
-                  <textarea rows={4} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 outline-none transition-all resize-none" placeholder="Tell us about your hiring needs..." />
+                  {/* ADDED: name="message" */}
+                  <textarea name="message" rows={4} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 outline-none transition-all resize-none" placeholder="Tell us about your hiring needs..." required />
                 </div>
-                <button className="w-full bg-brand-orange text-white py-4 rounded-xl font-bold flex items-center justify-center space-x-2 hover:bg-orange-600 transition-all group">
+                {/* FIXED: Ensured type="submit" */}
+                <button type="submit" className="w-full bg-brand-orange text-white py-4 rounded-xl font-bold flex items-center justify-center space-x-2 hover:bg-orange-600 transition-all group">
                   <span>Send Inquiry</span>
                   <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>

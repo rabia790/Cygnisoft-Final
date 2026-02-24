@@ -7,14 +7,14 @@ const hubs = [
     country: "Canada",
     address: "Global Operations Hub",
     desc: "Our North American headquarters focusing on client relations and strategic staffing for the US and Canadian markets.",
-    image: "https://picsum.photos/seed/canada/600/400"
+    image: "./src/img/globalOperations.jpg"
   },
   {
     city: "Vadodara, Gujarat",
     country: "India",
     address: "Talent & Development Center",
     desc: "Our primary talent hub and software development center, bridging the gap between Indian engineering excellence and global projects.",
-    image: "https://picsum.photos/seed/india/600/400"
+    image: "./src/img/talentDeve.jpg"
   }
 ];
 

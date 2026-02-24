@@ -19,7 +19,7 @@ const industryData = {
   manufacturing: {
     title: "Manufacturing",
     subtitle: "Industrial Excellence",
-    heroImage: "https://picsum.photos/seed/factory/1920/1080",
+    heroImage: "/src/img/manufacturing.jpg",
     description: "Empowering the next generation of industrial automation with elite engineering and operational talent.",
     stats: [
       { label: "Placements", value: "85+" },
@@ -36,7 +36,7 @@ const industryData = {
   technology: {
     title: "Technology",
     subtitle: "Digital Innovation",
-    heroImage: "https://picsum.photos/seed/code/1920/1080",
+    heroImage: "/src/img/technology.jpg",
     description: "Bridging the gap between complex technical challenges and the world's most talented developers.",
     stats: [
       { label: "Engineers", value: "120+" },
@@ -53,7 +53,7 @@ const industryData = {
   logistics: {
     title: "Logistics",
     subtitle: "Supply Chain Mastery",
-    heroImage: "https://picsum.photos/seed/shipping/1920/1080",
+    heroImage: "/src/img/logistics.jpg",
     description: "Optimizing global trade routes with specialized talent in logistics, warehousing, and distribution.",
     stats: [
       { label: "Operations", value: "45+" },
@@ -70,7 +70,7 @@ const industryData = {
   healthcare: {
     title: "Healthcare",
     subtitle: "Medical Innovation",
-    heroImage: "https://picsum.photos/seed/hospital/1920/1080",
+    heroImage: "/src/img/healthcare.jpg",
     description: "Supporting the healthcare industry with specialized medical staffing and health-tech professionals.",
     stats: [
       { label: "Placements", value: "60+" },
