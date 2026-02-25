@@ -1,20 +1,23 @@
 import { motion } from "motion/react";
 import { MapPin, Globe, Award, ShieldCheck } from "lucide-react";
 
+import globalOpsImg from "../img/globalOperations.jpg";
+import talentDevImg from "../img/talentDeve.jpg";
+
 const hubs = [
   {
     city: "Etobicoke, Ontario",
     country: "Canada",
     address: "Global Operations Hub",
     desc: "Our North American headquarters focusing on client relations and strategic staffing for the US and Canadian markets.",
-    image: "./src/img/globalOperations.jpg"
+    image: globalOpsImg
   },
   {
     city: "Vadodara, Gujarat",
     country: "India",
     address: "Talent & Development Center",
     desc: "Our primary talent hub and software development center, bridging the gap between Indian engineering excellence and global projects.",
-    image: "./src/img/talentDeve.jpg"
+    image: talentDevImg
   }
 ];
 
