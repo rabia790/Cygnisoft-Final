@@ -134,7 +134,7 @@ export default function Home() {
                   onClick={scrollToContact}
                   className="bg-white border border-brand-midnight text-brand-midnight px-10 py-5 rounded-none font-bold text-xs uppercase tracking-[0.2em] hover:bg-brand-midnight hover:text-white transition-all flex items-center justify-center"
                 >
-                  Our Global Strategy
+                  Partner With Us
                 </button>
               </div>
             </motion.div>
