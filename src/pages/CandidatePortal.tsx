@@ -1,57 +1,43 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "motion/react";
-import { Upload, Send, FileText, CheckCircle } from "lucide-react";
-import emailjs from '@emailjs/browser';
+import { Send, CheckCircle, Briefcase, MapPin, Globe, Zap } from "lucide-react";
 
 export default function CandidatePortal() {
   const [submitted, setSubmitted] = useState(false);
-  const [fileName, setFileName] = useState<string | null>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // 1. Handle File Selection
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      if (file.size > 5 * 1024 * 1024) {
-        alert("File is too large. Max 5MB allowed.");
-        return;
-      }
-      setFileName(file.name);
-    }
+  // Fetch Jobs from WordPress API
+  useEffect(() => {
+    const API_URL = 'https://staging-0446-cygnisoft-zadxc.wpcomstaging.com/wp-json/flowd/v1/india-jobs';
+    
+    fetch(API_URL)
+      .then(res => res.json())
+      .then(response => {
+        setJobs(response.data || response); 
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const recipient = "hr@cygnisoft.com";
+    const subject = encodeURIComponent(`Elite Application: ${formData.get("firstName")} ${formData.get("lastName")}`);
+    
+    const body = encodeURIComponent(
+      `Candidate Application Details:\n\n` +
+      `Name: ${formData.get("firstName")} ${formData.get("lastName")}\n` +
+      `Email: ${formData.get("email")}\n` +
+      `Primary Skillset: ${formData.get("skillset")}\n\n` +
+      `IMPORTANT: Please attach your resume file to this email before sending.`
+    );
+
+    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+    setSubmitted(true);
   };
-    const fileToBase64 = (file: File): Promise<string> => {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result as string);
-        reader.onerror = (error) => reject(error);
-      });
-    };
 
-// 2. Update your handleSubmit inside the component
-const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  const formData = new FormData(e.currentTarget);
-  const file = fileInputRef.current?.files?.[0];
-
-  const recipient = "hr@cygnisoft.com";
-  const subject = encodeURIComponent(`Elite Application: ${formData.get("firstName")} ${formData.get("lastName")}`);
-  
-  // We include the filename in the body so the HR knows what to look for
-  const body = encodeURIComponent(
-    `Candidate Application Details:\n\n` +
-    `Name: ${formData.get("firstName")} ${formData.get("lastName")}\n` +
-    `Email: ${formData.get("email")}\n` +
-    `Primary Skillset: ${formData.get("skillset")}\n` +
-    `Resume to look for: ${file?.name || "Not provided"}\n\n` +
-    `IMPORTANT: Please attach the file "${file?.name}" to this email before sending.`
-  );
-
-  // This opens Outlook/Gmail draft
-  window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
-  
-  setSubmitted(true);
-};
   if (submitted) {
     return (
       <div className="min-h-screen pt-20 flex items-center justify-center bg-gray-50">
@@ -82,13 +68,55 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     <div className="pt-20 min-h-screen bg-gray-50">
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* TOP SECTION: Full-width Job Openings */}
+          <div className="mb-16 bg-white p-8 md:p-12 rounded-[2.5rem] shadow-sm border border-gray-100">
+            <h3 className="text-3xl font-bold mb-8 flex items-center gap-3">
+              <Briefcase className="w-8 h-8 text-brand-orange" />
+              Immediate Career Opportunities
+            </h3>
+            
+            {loading ? (
+              <div className="grid md:grid-cols-3 gap-6 animate-pulse">
+                {[1, 2, 3].map(i => (
+                  <div key={i} className="h-32 bg-gray-100 rounded-2xl" />
+                ))}
+              </div>
+            ) : (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {jobs.length > 0 ? jobs.map((job: any) => (
+                  <div 
+                    key={job.id} 
+                    className="p-6 rounded-2xl bg-gray-50 border border-transparent hover:border-brand-orange/30 hover:bg-white hover:shadow-md transition-all cursor-pointer group"
+                    onClick={() => {
+                      const subject = encodeURIComponent(`Application for ${job.title}`);
+                      window.location.href = `mailto:hr@cygnisoft.com?subject=${subject}&body=Please attach your resume manually.`;
+                    }}
+                  >
+                    <h4 className="font-bold text-xl text-gray-900 group-hover:text-brand-orange transition-colors mb-2">{job.title}</h4>
+                    <div className="flex items-center gap-2 text-sm text-gray-500">
+                      <MapPin className="w-4 h-4" />
+                      {job.location}
+                    </div>
+                    <div className="mt-4 text-brand-orange font-bold text-sm uppercase tracking-wider group-hover:translate-x-1 transition-transform inline-flex items-center">
+                      Quick Apply →
+                    </div>
+                  </div>
+                )) : (
+                  <p className="text-gray-400">No openings currently listed. Please use the general application below.</p>
+                )}
+              </div>
+            )}
+          </div>
+
+          {/* BOTTOM SECTION: Two-column Info & Form */}
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div>
               <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
                 Join the <span className="text-brand-orange">Elite</span>.
               </h1>
               <p className="text-xl text-gray-500 mb-12 leading-relaxed">
-                Connect with global innovation. We don't just find jobs; we build careers at the world's most innovative companies.
+                Connect with global innovation. We build careers at the world's most innovative companies.
               </p>
               
               <div className="space-y-8">
@@ -142,36 +170,8 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
                   </select>
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-gray-400">Resume / CV (PDF)</label>
-                  <div className="relative group">
-                    <input 
-                      ref={fileInputRef}
-                      type="file" 
-                      accept=".pdf,.docx"
-                      onChange={handleFileChange}
-                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" 
-                    />
-                    <div className={`w-full border-2 border-dashed rounded-2xl p-8 flex flex-col items-center justify-center transition-all ${fileName ? 'border-brand-orange bg-orange-50' : 'border-gray-200 group-hover:border-brand-orange group-hover:bg-orange-50'}`}>
-                      {fileName ? (
-                        <>
-                          <FileText className="w-8 h-8 text-brand-orange mb-4" />
-                          <span className="text-sm font-bold text-brand-orange">{fileName}</span>
-                          <span className="text-xs text-gray-400 mt-2">Click to change file</span>
-                        </>
-                      ) : (
-                        <>
-                          <Upload className="w-8 h-8 text-gray-400 group-hover:text-brand-orange mb-4" />
-                          <span className="text-sm font-bold text-gray-500 group-hover:text-brand-orange">Click to upload or drag and drop</span>
-                          <span className="text-[10px] text-gray-400 mt-1 uppercase font-bold tracking-widest">PDF, DOCX (Max 5MB)</span>
-                        </>
-                      )}
-                    </div>
-                  </div>
-                </div>
-
                 <button type="submit" className="w-full bg-brand-orange text-white py-5 rounded-2xl font-bold flex items-center justify-center space-x-3 hover:bg-orange-600 transition-all shadow-xl shadow-orange-100 group">
-                  <span>Submit Application</span>
+                  <span>Submit General Application</span>
                   <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </form>
@@ -181,17 +181,4 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       </section>
     </div>
   );
-}
-
-// Icons
-function Globe(props: any) {
-  return (
-    <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-  )
-}
-
-function Zap(props: any) {
-  return (
-    <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-  )
 }
