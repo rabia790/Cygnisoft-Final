@@ -120,13 +120,22 @@ export default function Home() {
                 Bridging elite Indian talent with global innovation through precision-led recruitment and technical excellence.
               </p>
               <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
-                <Link to="/candidate-portal" className="bg-brand-orange text-white px-10 py-5 rounded-none font-bold text-xs uppercase tracking-[0.2em] hover:bg-brand-midnight transition-all shadow-2xl shadow-brand-orange/20 flex items-center justify-center group">
+                {/* Left Button: Navigates to Candidate Portal */}
+                <Link 
+                  to="/candidate-portal" 
+                  className="bg-brand-orange text-white px-10 py-5 rounded-none font-bold text-xs uppercase tracking-[0.2em] hover:bg-brand-midnight transition-all shadow-2xl shadow-brand-orange/20 flex items-center justify-center group"
+                >
                   Request Talent Advisory
                   <ArrowRight className="ml-3 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link to="/about" className="bg-white border border-brand-midnight text-brand-midnight px-10 py-5 rounded-none font-bold text-xs uppercase tracking-[0.2em] hover:bg-brand-midnight hover:text-white transition-all flex items-center justify-center">
+
+                {/* Right Button: Now scrolls to the bottom Consultation section */}
+                <button 
+                  onClick={scrollToContact}
+                  className="bg-white border border-brand-midnight text-brand-midnight px-10 py-5 rounded-none font-bold text-xs uppercase tracking-[0.2em] hover:bg-brand-midnight hover:text-white transition-all flex items-center justify-center"
+                >
                   Our Global Strategy
-                </Link>
+                </button>
               </div>
             </motion.div>
 
