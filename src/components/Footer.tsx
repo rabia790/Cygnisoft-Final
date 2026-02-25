@@ -24,7 +24,7 @@ export default function Footer() {
               The definitive bridge between elite Indian talent and global innovation. We deliver precision-led recruitment strategies for the world's most ambitious enterprises.
             </p>
             <div className="flex space-x-6">
-              <a href="https://www.linkedin.com/company/cygnisoft" target="_blank" rel="noreferrer" className="text-white/20 hover:text-brand-orange transition-colors">
+              <a href="https://www.linkedin.com/showcase/cygnisoft-india/" target="_blank" rel="noreferrer" className="text-white/20 hover:text-brand-orange transition-colors">
                 <Linkedin className="w-6 h-6" />
               </a>
               {/* 2. Updated to X icon */}
@@ -32,7 +32,7 @@ export default function Footer() {
                 <X className="w-6 h-6" />
               </a>
               {/* 3. Added Instagram icon */}
-              <a href="https://www.instagram.com/cygnisoft" target="_blank" rel="noreferrer" className="text-white/20 hover:text-brand-orange transition-colors">
+              <a href="https://www.instagram.com/cygnisoftstaffingindia" target="_blank" rel="noreferrer" className="text-white/20 hover:text-brand-orange transition-colors">
                 <Instagram className="w-6 h-6" />
               </a>
               <a href="https://www.facebook.com/people/CygniSoft-Staffing-India/61588040461783/" target="_blank" rel="noreferrer" className="text-white/20 hover:text-brand-orange transition-colors">
