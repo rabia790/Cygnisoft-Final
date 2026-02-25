@@ -1,9 +1,12 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 import { motion } from "motion/react";
 import { ArrowRight, Globe, Factory, Cpu, Truck, HeartPulse, Building2, Phone, Mail, ChevronRight, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 // @ts-ignore
-import heroStaffing from "../img/herostaffing.png";
+import heroStaffing from "../img/bannerimg.png";
+// @ts-ignore
+import logoOne from "../img/1.png";
+import logoTwo from "../img/2.png";
 
 const industries = [
   { 
@@ -56,6 +59,11 @@ const blueprint = [
 ];
 
 export default function Home() {
+  const contactRef = useRef<HTMLDivElement>(null);
+
+  const scrollToContact = () => {
+    contactRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -122,28 +130,44 @@ export default function Home() {
               </div>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.2 }}
-              className="relative hidden lg:block"
-            >
-              <div className="relative z-10 rounded-none overflow-hidden shadow-2xl border border-gray-100">
-                <img 
-                  src={heroStaffing}
-                  alt="Executive Leadership" 
-                  className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-1000"
-                />
-              </div>
-              {/* Decorative Accents */}
-              <div className="absolute -top-10 -right-10 w-40 h-40 bg-brand-orange/5 rounded-full blur-3xl -z-10" />
-              <div className="absolute -bottom-10 -left-10 w-60 h-60 bg-brand-light rounded-full blur-3xl -z-10" />
-            </motion.div>
+      <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 1, delay: 0.2 }}
+      className="relative hidden lg:block"
+    >
+      <div className="relative z-10 rounded-none overflow-hidden shadow-2xl border border-gray-100 bg-white">
+        <img 
+          src={heroStaffing}
+          alt="Executive Leadership" 
+          className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-1000"
+        />
+      </div>
+        <motion.div
+          onClick={scrollToContact}
+          animate={{ 
+            scale: [1, 1.1, 1], 
+          }}
+          transition={{ 
+            duration: 2.5, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
+className="absolute -bottom-56 -left-48 z-20 w-[450px] h-[450px] flex items-center justify-center cursor-pointer pointer-events-auto"        >
+          <img 
+            src={logoOne} 
+            alt="CygniSoft Massive Logo" 
+            className="w-full h-auto object-contain drop-shadow-[0_60px_60px_rgba(0,0,0,0.35)]" 
+          />
+        </motion.div>
+
+          <div className="absolute -top-10 -right-10 w-40 h-40 bg-brand-orange/5 rounded-full blur-3xl -z-10" />
+          <div className="absolute -bottom-10 -left-10 w-60 h-60 bg-brand-light rounded-full blur-3xl -z-10" />
+        </motion.div>
           </div>
         </div>
       </section>
 
-      {/* 2. The "Power Bar" (Institutional Trust Bar) */}
       <section className="bg-brand-midnight py-16 mt-0 relative overflow-hidden z-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0 text-center">
@@ -299,7 +323,9 @@ export default function Home() {
       </section>
 
       {/* 6. Contact Strategy (Request a Consultation) */}
-      <section className="py-20 md:py-32 relative overflow-hidden bg-brand-midnight text-white">
+      <section 
+      ref={contactRef}
+      className="py-20 md:py-32 relative overflow-hidden bg-brand-midnight text-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-6xl mx-auto bg-white/5 border border-white/10 p-12 md:p-24 rounded-none relative overflow-hidden">
             <div className="grid lg:grid-cols-2 gap-20 relative z-10">
@@ -378,7 +404,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </div>
+    </div> 
   );
 }
+
 
