@@ -11,6 +11,9 @@ import techImg from "./img/technology.jpg";
 import logisticsImg from "./img/logistics.jpg";
 import healthcareImg from "./img/healthcare.jpg"; 
 import { log } from "console";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfEngagement from "./pages/TermsOfEngagement";
+import GlobalCompliance from "./pages/GlobalCompliance";
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -158,7 +161,10 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/candidate-portal" element={<CandidatePortal />} />
-          
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-engagement" element={<TermsOfEngagement />} />
+          <Route path="/global-compliance" element={<GlobalCompliance />} />
+
           {/* Industry Routes */}
           <Route path="/industries/manufacturing" element={<IndustryTemplate {...industryData.manufacturing} />} />
           <Route path="/industries/technology" element={<IndustryTemplate {...industryData.technology} />} />

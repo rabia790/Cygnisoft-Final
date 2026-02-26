@@ -93,9 +93,9 @@ export default function Footer() {
         <div className="pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[10px] font-black uppercase tracking-[0.3em] text-white/20">
           <p>© 2026 CygniSoft Staffing Solutions. All Rights Reserved.</p>
           <div className="flex space-x-12 mt-8 md:mt-0">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Engagement</a>
-            <a href="#" className="hover:text-white transition-colors">Global Compliance</a>
+            <a href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="/terms-of-engagement" className="hover:text-white transition-colors">Terms of Engagement</a>
+            <a href="/global-compliance" className="hover:text-white transition-colors">Global Compliance</a>
           </div>
         </div>
       </div>
