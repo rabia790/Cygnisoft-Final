@@ -27,10 +27,6 @@ export default function Footer() {
               <a href="https://www.linkedin.com/showcase/cygnisoft-india/" target="_blank" rel="noreferrer" className="text-white/20 hover:text-brand-orange transition-colors">
                 <Linkedin className="w-6 h-6" />
               </a>
-              {/* 2. Updated to X icon */}
-              <a href="https://x.com/cygnisoft" target="_blank" rel="noreferrer" className="text-white/20 hover:text-brand-orange transition-colors">
-                <X className="w-6 h-6" />
-              </a>
               {/* 3. Added Instagram icon */}
               <a href="https://www.instagram.com/cygnisoftstaffingindia" target="_blank" rel="noreferrer" className="text-white/20 hover:text-brand-orange transition-colors">
                 <Instagram className="w-6 h-6" />
