@@ -57,7 +57,23 @@ const blueprint = [
     desc: "We manage the entire onboarding lifecycle, including global compliance and logistics, ensuring immediate operational impact." 
   },
 ];
-
+const howHiringWorks = [
+  {
+    step: "01",
+    title: "Submit Hiring Request",
+    desc: "Tell us your role, skills, location, timeline, and budget. We confirm requirements within hours."
+  },
+  {
+    step: "02",
+    title: "Get Shortlisted Talent in 48 Hours",
+    desc: "We deliver pre-vetted profiles matched to your needs, including availability and rate."
+  },
+  {
+    step: "03",
+    title: "Interview & Hire in 7 Days",
+    desc: "You interview the best fits. We handle coordination, onboarding, and compliance."
+  }
+];
 export default function Home() {
   const contactRef = useRef<HTMLDivElement>(null);
 
@@ -102,7 +118,7 @@ export default function Home() {
       {/* 1. The "Premier" Hero Section */}
       <section className="relative min-h-[90vh] flex items-center pt-32 pb-32 overflow-hidden bg-white">
         <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -110,33 +126,49 @@ export default function Home() {
             >
               <div className="inline-flex items-center space-x-3 mb-8">
                 <div className="w-12 h-px bg-brand-orange" />
-                <span className="text-brand-orange text-[10px] font-black uppercase tracking-[0.4em]">Premier Recruitment Advisory</span>
+                     <span className="text-brand-orange text-[10px] font-black uppercase tracking-[0.4em]">Premier Recruitment Advisory</span>
               </div>
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-black text-brand-midnight leading-[1.05] mb-10 tracking-tighter">
-                Strategic Human Capital.<br />
-                <span className="text-brand-orange">The Pulse of Industry.</span>
+                Pre-Vetted Talent <br />
+                <span className="text-brand-orange">Delivered in 7 Days</span>
               </h1>
               <p className="text-lg md:text-xl text-brand-midnight/60 max-w-xl mb-12 leading-relaxed font-medium">
-                Bridging elite Indian talent with global innovation through precision-led recruitment and technical excellence.
+                Staffing solutions for Manufacturing, Technology, Logistics & Healthcare across India and North America.
               </p>
-              <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
-                {/* Left Button: Navigates to Candidate Portal */}
-                <Link 
-                  to="/candidate-portal" 
-                  className="bg-brand-orange text-white px-10 py-5 rounded-none font-bold text-xs uppercase tracking-[0.2em] hover:bg-brand-midnight transition-all shadow-2xl shadow-brand-orange/20 flex items-center justify-center group"
-                >
-                  Request Talent Advisory
-                  <ArrowRight className="ml-3 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+              <Link
+                to="/candidate-portal"
+                className="group inline-flex flex-col items-center justify-center
+                          h-16 sm:h-[72px] min-w-[240px] sm:min-w-[280px]
+                          bg-brand-orange text-white border border-brand-orange
+                          px-8 text-[11px] font-extrabold uppercase tracking-[0.18em]
+                          hover:bg-brand-midnight transition-all shadow-2xl shadow-brand-orange/20"
+              >
+                <div className="inline-flex items-center gap-3 leading-none whitespace-nowrap">
+                  <span>Find Jobs</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </div>
+                <div className="text-[10px] font-bold tracking-[0.12em] opacity-90 whitespace-nowrap mt-1">
+                  (For Candidates)
+                </div>
+              </Link>
 
-                {/* Right Button: Now scrolls to the bottom Consultation section */}
-                <button 
-                  onClick={scrollToContact}
-                  className="bg-white border border-brand-midnight text-brand-midnight px-10 py-5 rounded-none font-bold text-xs uppercase tracking-[0.2em] hover:bg-brand-midnight hover:text-white transition-all flex items-center justify-center"
-                >
-                  Partner With Us
-                </button>
-              </div>
+              <button
+                onClick={scrollToContact}
+                className="inline-flex flex-col items-center justify-center
+                          h-16 sm:h-[72px] min-w-[240px] sm:min-w-[280px]
+                          bg-white text-brand-midnight border border-brand-midnight
+                          px-8 text-[11px] font-extrabold uppercase tracking-[0.18em]
+                          hover:bg-brand-midnight hover:text-white transition-all"
+              >
+                <div className="leading-none whitespace-nowrap">
+                  Hire Talent
+                </div>
+                <div className="text-[10px] font-bold tracking-[0.12em] opacity-80 whitespace-nowrap mt-1">
+                  (For Employers)
+                </div>
+              </button>
+            </div>
             </motion.div>
 
       <motion.div
@@ -195,6 +227,48 @@ className="absolute -bottom-56 -left-48 z-20 w-[450px] h-[450px] flex items-cent
           </div>
         </div>
       </section>
+      
+     <section className="py-20 md:py-28 bg-white relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* optional heading (recommended) */}
+        <div className="max-w-3xl">
+          <h2 className="text-xs font-black text-brand-orange uppercase tracking-[0.5em] mb-6">
+            How It Works
+          </h2>
+          <h3 className="text-4xl md:text-6xl font-display font-bold text-brand-midnight tracking-tighter">
+            How Hiring Works
+          </h3>
+          <p className="text-brand-midnight/60 mt-6 text-lg font-medium leading-relaxed">
+            Clear steps. Faster hiring. Pre-vetted candidates across Manufacturing, Technology, Logistics & Healthcare.
+          </p>
+        </div>
+
+        <div className="mt-12 grid md:grid-cols-3 gap-10 relative">
+          {/* connector line (desktop) */}
+          <div className="hidden md:block absolute top-[22px] left-[40px] right-[40px] h-px bg-gray-200" />
+
+          {howHiringWorks.map((item) => (
+            <div key={item.step} className="relative">
+              <div className="w-11 h-11 border border-brand-midnight bg-white flex items-center justify-center font-black text-[11px] tracking-widest">
+                {item.step}
+              </div>
+
+              <h4 className="mt-6 text-xl md:text-2xl font-display font-bold text-brand-midnight">
+                {item.title}
+              </h4>
+
+              <p className="mt-3 text-sm text-brand-midnight/60 leading-relaxed font-medium max-w-sm">
+                {item.desc}
+              </p>
+
+              <div className="mt-6 text-[10px] font-black uppercase tracking-[0.3em] text-brand-orange">
+                48h response • 7-day delivery
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
 
       {/* 3. The Industry Practices (Modern Grid) */}
       <section className="py-20 md:py-32 relative overflow-hidden bg-white">
@@ -340,7 +414,7 @@ className="absolute -bottom-56 -left-48 z-20 w-[450px] h-[450px] flex items-cent
             <div className="grid lg:grid-cols-2 gap-20 relative z-10">
               <div>
                 <h2 className="text-xs font-black text-brand-orange uppercase tracking-[0.5em] mb-8">Talent Advisory</h2>
-                <h3 className="text-4xl md:text-5xl font-display font-bold mb-10 tracking-tighter">Request a Strategic Consultation</h3>
+                <h3 className="text-4xl md:text-5xl font-display font-bold mb-10 tracking-tighter">Get Talent in 48 Hours</h3>
                 <p className="text-white/60 mb-12 text-lg leading-relaxed font-medium">
                   Partner with CygniSoft to architect your global workforce strategy. Our advisors are ready to discuss your specific technical and operational requirements in a high-level briefing.
                 </p>
