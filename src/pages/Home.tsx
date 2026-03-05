@@ -261,7 +261,7 @@ className="absolute -bottom-56 -left-48 z-20 w-[450px] h-[450px] flex items-cent
                 {item.desc}
               </p>
 
-              <div className="mt-6 text-[10px] font-black uppercase tracking-[0.3em] text-brand-orange">
+              <div className="mt-6 text-xs font-black uppercase tracking-[0.3em] text-brand-orange">
                 48h response • 7-day delivery
               </div>
             </div>
