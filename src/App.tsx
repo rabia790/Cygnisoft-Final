@@ -113,7 +113,13 @@ const solutionData = {
       { title: "Software Engineer", desc: "Full-stack, Backend, and Frontend experts." },
       { title: "Project Manager", desc: "Agile certified leaders for complex delivery." },
       { title: "DevOps Engineer", desc: "Infrastructure and CI/CD automation specialists." }
-    ]
+    ],
+    methodology: [
+  { title: "Global Sourcing", desc: "Accessing passive talent across 4 continents using AI-driven headhunting." },
+  { title: "Technical Rigor", desc: "Multi-stage live coding and architectural reviews by our in-house experts." },
+  { title: "Culture Sync", desc: "Ensuring candidates align with your agile workflows and communication style." },
+  { title: "Rapid Onboarding", desc: "Reducing time-to-productivity with our specialized 48-hour integration plan." }
+  ]
   },
   softwareDev: {
     title: "Bespoke Software Development",
@@ -130,7 +136,13 @@ const solutionData = {
       { title: "Frontend Specialist", desc: "React, Next.js, and Vue experts." },
       { title: "Backend Architect", desc: "Node.js, Python, and scalable cloud logic." },
       { title: "UI/UX Designer", desc: "User-centric design and prototyping." }
-    ]
+    ],
+    methodology: [
+  { title: "Architecture", desc: "Designing scalable, cloud-native blueprints that handle enterprise-level loads." },
+  { title: "Agile Sprints", desc: "Two-week delivery cycles with full transparency and bi-weekly demos." },
+  { title: "QA Automation", desc: "Zero-defect mindset with automated testing pipelines and CI/CD integration." },
+  { title: "Scalable Growth", desc: "Building modular codebases that grow with your user base without technical debt." }
+]
   },
   training: {
     title: "Global Training Programs",
@@ -147,7 +159,13 @@ const solutionData = {
       { title: "Technical Trainer", desc: "Subject matter experts in cloud and coding." },
       { title: "Learning Architect", desc: "Custom curriculum design for corporate teams." },
       { title: "Success Manager", desc: "Ensuring high completion and skill retention." }
-    ]
+    ],
+    methodology: [
+  { title: "Skill Gap Audit", desc: "Data-driven assessment of your team's current technical capabilities." },
+  { title: "Custom Paths", desc: "Curriculums designed specifically for your stack (AWS, React, FinTech, etc)." },
+  { title: "Applied Labs", desc: "Hands-on project work that solves real business problems during training." },
+  { title: "Certification", desc: "Industry-standard benchmarks to prove workforce readiness." }
+]
   },
   erp: {
     title: "Enterprise ERP Solutions",
@@ -164,7 +182,13 @@ const solutionData = {
       { title: "ERP Solution Architect", desc: "End-to-end system design and cloud migration strategy." },
       { title: "Dynamics 365 Specialist", desc: "Experts in Finance, Supply Chain, and Sales modules." },
       { title: "Odoo Consultant", desc: "Modular implementation and Python-based customization." }
-    ]
+    ],
+    methodology: [
+  { title: "Discovery", desc: "Deep-dive into current bottlenecks and defining clear ROI milestones." },
+  { title: "Data Migration", desc: "Securely moving legacy data into Odoo/Dynamics with zero loss." },
+  { title: "Customization", desc: "Tailoring Python or Power Platform to fit your unique business logic." },
+  { title: "User Adoption", desc: "Post-launch training to ensure 100% staff proficiency from Day 1." }
+]
   }
 };
 

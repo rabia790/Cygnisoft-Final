@@ -14,9 +14,10 @@ interface IndustryPageProps {
   description: string;
   roles: Role[];
   stats: { label: string; value: string }[];
+  methodology?: { title: string; desc: string }[];
 }
 
-export default function IndustryTemplate({ title, subtitle, heroImage, description, roles, stats }: IndustryPageProps) {
+export default function IndustryTemplate({ title, subtitle, heroImage, description, roles, stats, methodology }: IndustryPageProps) {
   
   const handleEmailDraft = (e: React.FormEvent) => {
     e.preventDefault();
@@ -80,6 +81,32 @@ export default function IndustryTemplate({ title, subtitle, heroImage, descripti
               <div key={idx} className="text-center">
                 <div className="text-4xl font-bold text-brand-orange mb-1">{stat.value}</div>
                 <div className="text-sm font-semibold text-brand-grey uppercase tracking-wider">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* NEW: Strategic Service Blueprint */}
+      <section className="py-24 bg-brand-midnight text-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">
+              Strategic <span className="text-brand-orange">Methodology</span>
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              How we ensure excellence and ROI for every {title} engagement.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-0 border border-gray-800 rounded-2xl overflow-hidden">
+            {/* These would be passed as a new prop 'methodology' or hardcoded per type */}
+            {methodology?.map((step, idx) => (
+              <div key={idx} className="p-10 border-r border-gray-800 last:border-r-0 hover:bg-brand-orange/5 transition-colors group">
+                <div className="text-brand-orange text-5xl font-black opacity-20 group-hover:opacity-100 transition-opacity mb-6">
+                  0{idx + 1}
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-white uppercase tracking-wider">{step.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">{step.desc}</p>
               </div>
             ))}
           </div>
