@@ -256,7 +256,7 @@ className="absolute -bottom-56 -left-48 z-20 w-[450px] h-[450px] flex items-cent
               <h4 className="mt-6 text-xl md:text-2xl font-display font-bold text-brand-midnight">
                 {item.title}
               </h4>
-
+ 
               <p className="mt-3 text-sm text-brand-midnight/60 leading-relaxed font-medium max-w-sm">
                 {item.desc}
               </p>

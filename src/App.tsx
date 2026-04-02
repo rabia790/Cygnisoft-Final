@@ -148,6 +148,23 @@ const solutionData = {
       { title: "Learning Architect", desc: "Custom curriculum design for corporate teams." },
       { title: "Success Manager", desc: "Ensuring high completion and skill retention." }
     ]
+  },
+  erp: {
+    title: "Enterprise ERP Solutions",
+    subtitle: "Operational Excellence",
+    heroImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000",
+    description: "Transforming business operations with expert implementation and support for Dynamics 365, Odoo, and specialized ERP ecosystems.",
+    stats: [
+      { label: "Implementations", value: "50+" },
+      { label: "Efficiency Gain", value: "40%" },
+      { label: "User Adoption", value: "98%" },
+      { label: "Global Support", value: "24/7" }
+    ],
+    roles: [
+      { title: "ERP Solution Architect", desc: "End-to-end system design and cloud migration strategy." },
+      { title: "Dynamics 365 Specialist", desc: "Experts in Finance, Supply Chain, and Sales modules." },
+      { title: "Odoo Consultant", desc: "Modular implementation and Python-based customization." }
+    ]
   }
 };
 
@@ -175,6 +192,7 @@ export default function App() {
           <Route path="/solutions/tech-staffing" element={<IndustryTemplate {...solutionData.techStaffing} />} />
           <Route path="/solutions/software-dev" element={<IndustryTemplate {...solutionData.softwareDev} />} />
           <Route path="/solutions/training" element={<IndustryTemplate {...solutionData.training} />} />
+          <Route path="/solutions/erp" element={<IndustryTemplate {...solutionData.erp} />} />
         </Routes>
       </Layout>
     </Router>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from  "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X, Factory, Cpu, Truck, HeartPulse, Briefcase, Code, GraduationCap, Users } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
@@ -15,6 +15,12 @@ const industries = [
 const solutions = [
   { name: "Elite Tech Staffing", path: "/solutions/tech-staffing", icon: Briefcase, desc: "Connecting you with the top 1% of tech talent." },
   { name: "Bespoke Software Development", path: "/solutions/software-dev", icon: Code, desc: "Custom solutions built for your unique needs." },
+  { 
+    name: "Enterprise ERP Solutions", 
+    path: "/solutions/erp", 
+    icon: Cpu, 
+    desc: "Transforming operations with Dynamics 365 and Odoo expertise." 
+  },
   { name: "Global Training Programs", path: "/solutions/training", icon: GraduationCap, desc: "Upskilling teams for the digital frontier." },
 ];
 
