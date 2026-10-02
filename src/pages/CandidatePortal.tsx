@@ -9,7 +9,7 @@ export default function CandidatePortal() {
 
   // Fetch Jobs from WordPress API
   useEffect(() => {
-    const API_URL = 'https://staging-0446-cygnisoft-zadxc.wpcomstaging.com/wp-json/flowd/v1/india-jobs';
+    const API_URL = 'https://cygnisoft.com/wp-json/flowd/v1/india-jobs';
     
     fetch(API_URL)
       .then(res => res.json())
